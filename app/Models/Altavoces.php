@@ -16,11 +16,19 @@ class Altavoces extends Model
         'modelo',
         'marca',
         'foto',
-        'descripcion'
+        'descripcion',
+        'alquilado'
     ];
 
+    //pongo la relación que tengo con el user
+    /*
+      public function user()
+      {
+          return $this->belongsToMany(User::class, 'alquileres')->withPivot('fecha_devolucion');
+      }
+      */
 
-      public function alquiler()
+      public function alquileres()
       {
           return $this->hasMany(Alquileres::class)->whereNull('fecha_devolucion');
       }

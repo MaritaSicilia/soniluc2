@@ -4,9 +4,9 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     @if (session('status'))
-                        <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
+                        <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-white dark:text-green-400"
                             role="alert">
-                            <span class="font-medium"></span>{{session('status') }}
+                            <span class="font-medium"></span>{{ session('status') }}
                         </div>
                     @endif
                     <h2 class="flex items-center text-3xl font-semibold text-gray-700 mb-5">Mis Altavoces Alquilados</h2>
@@ -29,7 +29,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-
                                 @foreach ($alquileres as $alquiler)
                                     @if ($alquiler->fecha_devolucion == null && $alquiler->id_user == Auth::user()->id)
                                         <tr class="bg-white border-b">
@@ -41,10 +40,10 @@
                                             <td class="px-6 py-4">{{ $alquiler->fecha_limite }}</td>
                                             <td class="px-6 py-4">{{ $alquiler->fecha_devolucion }}</td>
                                             <td class="px-6 py-4">
-                                                <form action="{{ route('alquiler.update', $alquiler->id) }}"
+                                                <form action="{{ route('alquiler.destroy', $alquiler->id) }}"
                                                     method="POST">
                                                     @csrf
-                                                    @method('PUT')
+                                                    @method('DELETE')
                                                     <button type="submit"
                                                         class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Devolver</button>
                                                 </form>
@@ -60,4 +59,3 @@
         </div>
     </div>
 </x-app-layout>
-s

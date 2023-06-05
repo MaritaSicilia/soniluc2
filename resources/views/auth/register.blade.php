@@ -37,11 +37,11 @@
             <x-input-error :messages="$errors->get('phone')" class="mt-2" />
         </div>
 
-        <!-- Age -->
+        <!-- Fecha Nacimiento -->
         <div>
-            <x-input-label for="age" :value="__('Edad')" />
-            <x-text-input id="age" class="block mt-1 w-full" type="text" name="age" :value="old('age')" required autofocus autocomplete="age" />
-            <x-input-error :messages="$errors->get('age')" class="mt-2" />
+            <x-input-label for="fecha_nac" :value="__('Fecha Nacimiento')" />
+            <x-text-input id="fecha_nac" class="block mt-1 w-full" type="date" name="fecha_nac" :value="old('fecha_nac')" required autofocus autocomplete="fecha_nac" />
+            <x-input-error :messages="$errors->get('fecha_nac')" class="mt-2" />
         </div>
 
         <!-- Email Address -->

@@ -36,7 +36,7 @@ class RegisteredUserController extends Controller
             'dni' => ['required', 'string', 'max:9', 'unique:'.User::class, 'regex:/^[0-9]{8}[A-Z]$/'],
             'address' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'integer', 'regex:/^\d{9}$/'],
-            'age' => ['required', 'integer', 'regex:/^\d{1,3}$/'],
+            'fecha_nac' => ['required', 'date'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
@@ -47,7 +47,7 @@ class RegisteredUserController extends Controller
             'dni' => $request->dni,
             'address' => $request->address,
             'phone' => $request->phone,
-            'age' => $request->age,
+            'fecha_nac' => $request->fechanac,
             'email' => $request->email,
             'rol' => 'usuario',
             'password' => Hash::make($request->password),

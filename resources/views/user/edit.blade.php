@@ -56,12 +56,12 @@
                             @enderror
                             <div class="form-group my-6">
                                 <label class="text-xl font-semibold text-gray-700 inline-block"
-                                    for="age">Edad:</label><br>
-                                <input type="text" name="age" id="age" class="form-control w-full"
-                                    value="{{ $user->age }}">
+                                    for="fecha_nac">Fecha Nacimiento:</label><br>
+                                <input type="date" name="fecha_nac" id="fecha_nac" class="form-control w-full"
+                                    value="{{ $user->fecha_nac }}">
                             </div>
-                            @error('age')
-                                {{ $errors->first('age') }}
+                            @error('fecha_nac')
+                                {{ $errors->first('fecha_nac') }}
                             @enderror
                             <div class="form-group my-6">
                                 <label class="text-xl font-semibold text-gray-700 inline-block"
@@ -72,16 +72,7 @@
                             @error('email')
                                 {{ $errors->first('email') }}
                             @enderror
-                            <div class="form-group my-6">
-                                <label class="text-xl font-semibold text-gray-700 inline-block"
-                                    for="rol">Rol:</label><br>
-                                <select id="rol" name="rol"
-                                    class="form-control w-full text-sm font-medium text-gray-900">
-                                    <option value="usuario">Usuario</option>
-                                    <option value="oficinista">Oficinista</option>
-                                    <option value="admin">Admin</option>
-                                </select>
-                            </div>
+
                             <button type="submit my-6"
                                 class="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Guardar
                                 cambios</button>

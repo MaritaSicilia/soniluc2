@@ -74,10 +74,10 @@ class AltavocesController extends Controller
     public function edit(Request $request, $id)
     {
         // Para recuperar el altavox por su id
-        $libro = Altavoces::findOrFail($id);
+        $altavoz = Altavoces::findOrFail($id);
         // Para cargar la imagen que tenemos en public storage (El de arriba)
         $url = 'storage/img/';
-        return view('altavoz.edit')->with('altavoz', $libro)->with('url', $url);
+        return view('altavoz.edit')->with('altavoz', $altavoz)->with('url', $url);
     }
 
     /**
@@ -94,7 +94,7 @@ class AltavocesController extends Controller
             'descripcion' => 'required'
         ]);
         try {
-            // Carga los datos del coche
+            // Carga los datos del altavoz
             $mialtavoz = Altavoces::findOrFail($id);
             $mialtavoz->precio = $request->precio;
             $mialtavoz->marca = $request->marca;
@@ -107,9 +107,9 @@ class AltavocesController extends Controller
             }
             $mialtavoz->descripcion = $request->descripcion;
             $mialtavoz->save(); // Edita en la base de datos el libro
-            return redirect()->route('altavoz.index')->with('status', 'Producto editado correctamente'); // Una vez subido redirige al index y crea una variable de sesion status
+            return redirect()->route('altavoz.index')->with('status', 'Altavoz editado correctamente'); // Una vez subido redirige al index y crea una variable de sesion status
         } catch (QueryException $exception) {
-            return redirect()->route('altavoz.index')->with('status', 'No se ha podido editar el producto'); // Si da error mostramos el mensaje de que no se ha podido crear el libro
+            return redirect()->route('altavoz.index')->with('status', 'No se ha podido editar el altavoz'); // Si da error mostramos el mensaje de que no se ha podido crear el libro
         }
     }
 
@@ -121,6 +121,6 @@ class AltavocesController extends Controller
         //Cargo los datos del libro por su id
         $mialtavoz = Altavoces::findOrFail($id);
         $mialtavoz->delete();
-        return redirect()->route('altavoz.index')->with('status', 'Producto borrado correctamente');
+        return redirect()->route('altavoz.index')->with('status', 'Altavoz borrado correctamente');
     }
 }

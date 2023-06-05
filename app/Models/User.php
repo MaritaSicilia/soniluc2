@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+//use Illuminate\Contracts\Auth\MustVerifyEmail;
+
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -13,6 +15,9 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+
+    //*protected $table = 'users';
 
     /**
      * The attributes that are mass assignable.
@@ -25,7 +30,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'dni',
         'address',
         'phone',
-        'age',
+        'fecha_nac',
         'email',
         'rol',
         'password',
@@ -50,15 +55,17 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-       // Un usuario tiene varios prestamos
+       /* Un usuario tiene varios prestamos
+       public function altavoz()
+       {
+           return $this->belongsToMany(Altavoces::class, 'alquileres')->withPivot('fecha_alquiler','fecha_devolucion');
+       }
+*/
+
+
        public function alquileres()
        {
-           return $this->hasMany(Alquileres::class);
+           return $this->hasMany(Alquileres::class); //->whereNull('fecha_devolucion');
        }
 
-       // Este método comprueba si el rol del usuario es "bibliotecario" y devuelve un valor booleano indicando si es cierto o falso.
-       public function esOficinista()
-       {
-           return $this->rol === 'oficinista';
-       }
 }

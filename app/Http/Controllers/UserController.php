@@ -25,14 +25,18 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user.create');
+        $users = User::all();
+        return view('user.create')->with('users', $users);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
+
+
+
         try {
             // Crea un nuevo usuario
             $user = new User();
@@ -41,14 +45,16 @@ class UserController extends Controller
             $user->dni = $request->dni;
             $user->address = $request->address;
             $user->phone = $request->phone;
-            $user->age = $request->age;
+            $user->fecha_nac = $request->fechanac;
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
-            $user->rol = $request->rol;
+            $user->rol = 'usuario';
             $user->save(); // Edita en la base de datos el usuario
             return redirect()->route('user.index')->with('status', 'Usuario editado correctamente'); // Una vez subido redirige al index y crea una variable de sesion status
+            var_dump($request);
         } catch (QueryException $exception) {
-            return redirect()->route('user.index')->with('status', 'No se ha podido editar el usuario'); // Si da error mostramos el mensaje de que no se ha podido editar usuario
+            echo $exception->getMessage();
+            //return redirect()->route('user.index')->with('status', 'No se ha podido editar el usuario'); // Si da error mostramos el mensaje de que no se ha podido editar usuario
         }
     }
 
@@ -75,7 +81,7 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id): RedirectResponse
+    public function update(Request $request, $id)
     {
         try {
             // Carga los datos del usuario
@@ -85,10 +91,10 @@ class UserController extends Controller
             $user->dni = $request->dni;
             $user->address = $request->address;
             $user->phone = $request->phone;
-            $user->age = $request->age;
+            $user->fecha_nac = $request->fechanac;
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
-            $user->rol = $request->rol;
+            $user->rol = 'usuario';
             $user->save(); // Edita en la base de datos el usuario
             return redirect()->route('user.index')->with('status', 'Usuario editado correctamente'); // Una vez subido redirige al index y crea una variable de sesion status
 

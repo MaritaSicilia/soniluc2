@@ -3,7 +3,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <h2 class="flex items-center text-3xl font-semibold text-gray-700 mb-5">Detalles del Usuario</h2>
+                    <h2 class="flex items-center text-3xl font-semibold text-gray-700 mb-5">Altavoces alquilados por {{ __($user->name) }}</h2>
                     <!--Detalles del usuario-->
                     <div class="mt-10 flex justify-evenly justify-items-center mx-10">
                         <div class="flex-col w-full px-6">

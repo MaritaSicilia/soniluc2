@@ -26,7 +26,7 @@
                     @endif
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-nav-link :href="route('altavoz.index')" :active="request()->routeIs('altavoz.index')">
-                            {{ __('Mis Altavoces') }}
+                            {{ __('Lista de Altavoces') }}
                         </x-nav-link>
                     </div>
                     @if(auth()->user()->rol == 'admin')
